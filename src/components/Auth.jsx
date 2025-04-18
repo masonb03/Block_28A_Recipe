@@ -28,18 +28,18 @@ function Auth({ token }) {
   }, [token]);
 
   return (
-    <>
+    <div className="auth-container">
       <h2>Authorize Token</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <p className="error">{error}</p>}
       {auth ? (
-        <div>
-          <h2>Your username is {auth.username}</h2>
-          <h2>Your token is {token}</h2>
+        <div className="auth-details">
+          <p><strong>Your username is {auth.username}</strong></p>
+          <p><strong>Your token is {token}</strong></p>
         </div>
       ) : (
-        <h2>Loading or Please Sign In</h2>
+        <p>Loading or Please Sign In</p>
       )}
-    </>
+    </div>
   );
 }
 

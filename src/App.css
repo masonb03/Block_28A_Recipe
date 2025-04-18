@@ -250,3 +250,35 @@ form button {
   box-shadow: 0 0 8px rgb(255, 136, 0), 0 0 16px rgb(255, 136, 0);
   transform: scale(1.03);
 }
+
+/* Auth */
+.auth-container{
+  background-color: #424769;
+  max-width:500px;
+  margin:   5rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  color:white;
+  text-align: center;
+}
+
+.auth-container h2{
+  margin-bottom: 1.5rem;
+  color: #f9b17a;
+}
+
+.auth-details p{
+  margin: 1rem 0;
+  font-size: 1.1rem;
+}
+
+.auth-details strong{
+  color: #d67900;
+}
+
+.error{
+  color: #ff6b6b;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
