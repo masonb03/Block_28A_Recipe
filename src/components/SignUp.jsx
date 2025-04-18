@@ -57,7 +57,7 @@ function Signup({ setToken }) {
             value={password}
           />
         </label>
-        <button>Sign Up</button>
+        <button className="glow-button">Sign Up</button>
       </form>
     </>
   );

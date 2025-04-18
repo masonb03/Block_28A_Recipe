@@ -27,12 +27,15 @@ function Recipe({ recipe, setRecipe, favRecipe, setFavRecipe, token }) {
   };
 
   return (
-    <>
+    <div className="recipe-grid">
       {recipe.map((food) => (
-        <div key={food.idMeal}>
-          <img src={food.strMealThumb} style={{ height: "200px" }} />
+        <div key={food.idMeal} className="recipe-card">
+          <img 
+          src={food.strMealThumb} 
+          alt="Recipe Image" 
+          style={{ height: "200px", borderRadius: "8px" }} />
           <h2>{food.strMeal}</h2>
-          <button 
+          <button className="recipe-button"
             onClick={() => handleClick(food)} 
             disabled={!token}
           >
@@ -40,7 +43,7 @@ function Recipe({ recipe, setRecipe, favRecipe, setFavRecipe, token }) {
           </button>
         </div>
       ))}
-    </>
+    </div>
   );
 }
 

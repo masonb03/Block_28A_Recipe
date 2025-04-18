@@ -1,14 +1,24 @@
 import { Link } from "react-router-dom"
 
 function Fav({favRecipe, setFavRecipe}){
+
+    if (!favRecipe) {
+        return (
+          <>
+            <p>No favorite selected. Go back and choose a recipe!</p>
+            <Link to="/">Back to Home</Link>
+          </>
+        );
+      }
+
     return(
-        <>
-        <img src={favRecipe?.strMealThumb} style={{height: "400px"}}/>
+        <div className="favorite-view">
+        <img src={favRecipe?.strMealThumb} alt="Favorite Recipe" />
         <p>Name: {favRecipe?.strMeal}</p>
         <p>Origin: {favRecipe?.strArea}</p>
-        <Link to="/">Back to Home</Link>
-        <button onClick={()=>setFavRecipe(null)}>Remove Favorite</button>
-        </>
+        <Link to="/" className="back-home">Back to Home</Link>
+        <button className="favorite-button" onClick={()=>setFavRecipe(null)}>Remove Favorite</button>
+        </div>
     )
 }
 

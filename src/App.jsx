@@ -28,28 +28,31 @@ function App() {
 
   return (
     <>
+    
       <nav>
-        <Link to="/">Home</Link>
-        <Link to="/favorite">Favorite</Link>
-        <Link to="/signup">Sign Up</Link>
-        <Link to="/auth">Authorize</Link>
+        <div>
+          <Link to="/">Home</Link>
+          <Link to="/favorite">Favorite</Link>
+          <Link to="/signup">Sign Up</Link>
+          <Link to="/auth">Authorize</Link>
+        </div>
         {token && <button onClick={handleLogout}>Logout</button>} 
       </nav>
-
-      <h1>Recipes</h1>
-
-      <Routes>
-          <Route
-            path="/"
-            element={
-          <Recipe recipe={recipe} setRecipe={setRecipe} favRecipe={favRecipe} setFavRecipe={setFavRecipe} token={token} />} /> 
-          <Route path="/signup" element={<Signup setToken={setToken} />} />
-          <Route path="/auth" element={<Auth token={token} />} />
-          <Route
-            path="/favorite"
-            element={token ? <Fav favRecipe={favRecipe} setFavRecipe={setFavRecipe} /> : <Navigate to="/signup" />}
-          />
-      </Routes>
+      <div className="container">
+        <h1>Recipes</h1>
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <Recipe recipe={recipe} setRecipe={setRecipe} favRecipe={favRecipe} setFavRecipe={setFavRecipe} token={token} />} /> 
+                  <Route path="/signup" element={<Signup setToken={setToken} />} />
+                  <Route path="/auth" element={<Auth token={token} />} />
+                  <Route
+                path="/favorite"
+                element={token ? <Fav favRecipe={favRecipe} setFavRecipe={setFavRecipe} /> : <Navigate to="/signup" />}
+                  />
+              </Routes>
+      </div>
     </>
   );
 }
