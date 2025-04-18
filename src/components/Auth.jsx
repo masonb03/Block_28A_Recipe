@@ -33,8 +33,8 @@ function Auth({ token }) {
       {error && <p className="error">{error}</p>}
       {auth ? (
         <div className="auth-details">
-          <p><strong>Your username is {auth.username}</strong></p>
-          <p><strong>Your token is {token}</strong></p>
+          <p><strong>Username: {auth.username}</strong></p>
+          <p><strong>Token: {token.slice(0, 10)}...{token.slice(-5)}</strong></p>
         </div>
       ) : (
         <p>Loading or Please Sign In</p>

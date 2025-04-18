@@ -84,21 +84,27 @@ nav button:hover{
 
 /* Recipe Cards */
 
-.recipe-grid{
-  display:grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+.recipe-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 
-.recipe-card{
-  background-color: #676f9d;
+
+.recipe-card {
+  background-color: white;
   border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   padding: 1rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
   text-align: center;
   transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
+
 
 .recipe-card:hover{
   transform: scale(1.03);
@@ -129,7 +135,7 @@ nav button:hover{
 .recipe-button {
   background-color: #d67900;
   color: white;
-  margin-left: 20px;
+  margin-left: 2px;
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
