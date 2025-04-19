@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 function Recipe({ recipe, setRecipe, favRecipe, setFavRecipe, token }) {
   const navigate = useNavigate();
@@ -19,12 +19,14 @@ function Recipe({ recipe, setRecipe, favRecipe, setFavRecipe, token }) {
 
   const handleClick = (recipe) => {
     if (!token) {
-      alert("You need to be logged in to add to favorites!");
+      navigate("/signup");
       return;
     }
     setFavRecipe(recipe);
     navigate("/favorite");
   };
+
+
 
   return (
     <div className="recipe-grid">
@@ -34,10 +36,11 @@ function Recipe({ recipe, setRecipe, favRecipe, setFavRecipe, token }) {
           src={food.strMealThumb} 
           alt="Recipe Image" 
           style={{ height: "200px", borderRadius: "8px" }} />
-          <h2>{food.strMeal}</h2>
+          <h2>
+            <Link to={`/recipe/${food.idMeal}`}>{food.strMeal}</Link>
+          </h2>
           <button className="recipe-button"
             onClick={() => handleClick(food)} 
-            disabled={!token}
           >
             {token ? "Favorite" : "Log in to Favorite"}
           </button>

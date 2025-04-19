@@ -1,10 +1,13 @@
+
 import { useState, useEffect } from 'react';
 import './App.css';
 import Signup from './components/SignUp';
 import Auth from './components/Auth';
 import Fav from './components/Fav';
 import Recipe from './components/Recipe';
+import RecipeDetails from './components/RecipeDetails';
 import { Route, Routes, Link, Navigate, useNavigate } from 'react-router-dom';
+import Login from './components/Login';
 
 function App() {
   const [token, setToken] = useState(() => localStorage.getItem("token"));
@@ -47,10 +50,9 @@ function App() {
                   <Recipe recipe={recipe} setRecipe={setRecipe} favRecipe={favRecipe} setFavRecipe={setFavRecipe} token={token} />} /> 
                   <Route path="/signup" element={<Signup setToken={setToken} />} />
                   <Route path="/auth" element={<Auth token={token} />} />
-                  <Route
-                path="/favorite"
-                element={token ? <Fav favRecipe={favRecipe} setFavRecipe={setFavRecipe} /> : <Navigate to="/signup" />}
-                  />
+                  <Route path="/favorite" element={token ? <Fav favRecipe={favRecipe} setFavRecipe={setFavRecipe} /> : <Navigate to="/signup" />} />
+                  <Route path="/recipe/:id" element={<RecipeDetails />} />
+                  <Route path="/login" element={<Login/>}/>
               </Routes>
       </div>
     </>
