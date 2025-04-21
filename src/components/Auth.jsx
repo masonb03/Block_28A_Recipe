@@ -14,11 +14,17 @@ function Auth({ token }) {
             Authorization: `Bearer ${token}`,
           },
         });
+    
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`Server error (${res.status}): ${text}`);
+        }
+    
         const data = await res.json();
         setAuth(data);
       } catch (error) {
-        console.error(error);
-        setError(error.message);
+        console.error("Fetch user error:", error);
+        setError(error.message || "Failed to fetch user");
       }
     }
 

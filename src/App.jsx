@@ -6,6 +6,7 @@ import Auth from './components/Auth';
 import Fav from './components/Fav';
 import Recipe from './components/Recipe';
 import RecipeDetails from './components/RecipeDetails';
+import RandomRecipes from './components/RandomRecipes';
 import { Route, Routes, Link, Navigate, useNavigate } from 'react-router-dom';
 import Login from './components/Login';
 
@@ -38,11 +39,13 @@ function App() {
           <Link to="/favorite">Favorite</Link>
           <Link to="/signup">Sign Up</Link>
           <Link to="/auth">Authorize</Link>
+          {!token && <Link to="/login">Login</Link>}
         </div>
         {token && <button onClick={handleLogout}>Logout</button>} 
       </nav>
       <div className="container">
         <h1>Recipes</h1>
+        <RandomRecipes />
             <Routes>
               <Route
                 path="/"
@@ -52,7 +55,7 @@ function App() {
                   <Route path="/auth" element={<Auth token={token} />} />
                   <Route path="/favorite" element={token ? <Fav favRecipe={favRecipe} setFavRecipe={setFavRecipe} /> : <Navigate to="/signup" />} />
                   <Route path="/recipe/:id" element={<RecipeDetails />} />
-                  <Route path="/login" element={<Login/>}/>
+                  <Route path="/login" element={<Login setToken={setToken}/>}/>
               </Routes>
       </div>
     </>

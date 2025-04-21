@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 
 
-function Login(){
+function Login({setToken}){
     const [ username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
@@ -12,7 +12,7 @@ function Login(){
         e.preventDefault()
 
         try {
-            const res = await fetch("http://localhost:3000/login", {
+          const res = await fetch("https://fsa-recipe.up.railway.app/api/auth/login", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
@@ -25,6 +25,7 @@ function Login(){
             }
       
             const data = await res.json();
+            setToken(data.token)
             localStorage.setItem("token", data.token);
             navigate("/");
           } catch (err) {
